@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: #e5e7eb;
+    --gradient-cyan: #557170;
+  }
+
+  * {
+    border-color: rgb(31 41 55);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    transition-property: color, background-color;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism utilities for minimal design */
+  .glass-light {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-dark {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-minimal {
+    background-color: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Glow utilities - subtle for minimal design */
+  .glow-primary {
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.3);
+  }
+
+  .glow-primary-hover {
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.5);
+  }
+
+  .glow-white {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+
+  .glow-minimal {
+    box-shadow: 0 0 5px rgba(14, 165, 233, 0.2);
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
