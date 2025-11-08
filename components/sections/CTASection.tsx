@@ -7,15 +7,15 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import Link from "next/link";
 
 export function CTASection() {
-  const { ref, isVisible } = useScrollReveal({ threshold: 0.2 });
+  const { ref, isVisible, variants } = useScrollReveal({ threshold: 0.2 });
 
   return (
     <section ref={ref} className="py-20 md:py-32 px-4">
       <div className="container mx-auto max-w-4xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
+          initial="hidden"
+          animate={isVisible ? "visible" : "hidden"}
+          variants={variants}
           className="glass-dark rounded-2xl p-8 md:p-12 text-center"
         >
           <Heading as="h2" className="mb-4">
@@ -26,9 +26,9 @@ export function CTASection() {
             project and bring your vision to life.
           </Typography>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial="hidden"
+            animate={isVisible ? "visible" : "hidden"}
+            variants={variants}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link href="/contact">

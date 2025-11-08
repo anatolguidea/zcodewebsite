@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
+import { StructuredDataProvider } from "@/components/layout/StructuredDataProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,9 +53,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    // PNG icons can be added later - SVG works for modern browsers
+    // shortcut: "/favicon-16x16.png",
+    // apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
 };
@@ -66,7 +70,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <StructuredDataProvider />
+        {children}
+      </body>
     </html>
   );
 }

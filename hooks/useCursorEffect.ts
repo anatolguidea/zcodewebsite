@@ -1,19 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 interface CursorPosition {
   x: number;
   y: number;
 }
 
+interface CursorState {
+  isHoveringLink: boolean;
+  isHoveringButton: boolean;
+  isHoveringImage: boolean;
+  isClicking: boolean;
+}
+
+/**
+ * Enhanced cursor effect hook with proximity detection
+ * Supports link, button, and image hover states
+ */
 export function useCursorEffect() {
   const [position, setPosition] = useState<CursorPosition>({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [isClicking, setIsClicking] = useState(false);
+  const [state, setState] = useState<CursorState>({
+    isHoveringLink: false,
+    isHoveringButton: false,
+    isHoveringImage: false,
+    isClicking: false,
+  });
+  const rafIdRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
-    let animationFrameId: number;
     let lastUpdate = 0;
     const throttleDelay = 16; // ~60fps
 
@@ -24,36 +39,62 @@ export function useCursorEffect() {
       }
       lastUpdate = now;
 
-      animationFrameId = requestAnimationFrame(() => {
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
+
+      rafIdRef.current = requestAnimationFrame(() => {
         setPosition({ x: e.clientX, y: e.clientY });
       });
     };
 
     const handleMouseEnter = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (
-        target.tagName === "A" ||
-        target.tagName === "BUTTON" ||
-        target.closest("a") ||
-        target.closest("button")
-      ) {
-        setIsHovering(true);
+      // e.target can be Text, SVGElement, or other types - need to ensure it's an Element
+      const target = e.target;
+      let element: Element | null = null;
+
+      // Check if target is an Element (has closest method)
+      if (target instanceof Element) {
+        element = target;
+      } else if (target && target instanceof Node && target.parentElement) {
+        // If it's a Text node or similar, use parent element
+        element = target.parentElement;
       }
+
+      if (!element) {
+        return;
+      }
+
+      const link = element.closest("a");
+      const button = element.closest("button, [role='button']");
+      const image = element.closest("img, [data-image-hover]");
+
+      setState((prev) => ({
+        ...prev,
+        isHoveringLink: !!link,
+        isHoveringButton: !!button,
+        isHoveringImage: !!image,
+      }));
     };
 
     const handleMouseLeave = () => {
-      setIsHovering(false);
+      setState((prev) => ({
+        ...prev,
+        isHoveringLink: false,
+        isHoveringButton: false,
+        isHoveringImage: false,
+      }));
     };
 
     const handleMouseDown = () => {
-      setIsClicking(true);
+      setState((prev) => ({ ...prev, isClicking: true }));
     };
 
     const handleMouseUp = () => {
-      setIsClicking(false);
+      setState((prev) => ({ ...prev, isClicking: false }));
     };
 
-    window.addEventListener("mousemove", updateCursor);
+    window.addEventListener("mousemove", updateCursor, { passive: true });
     document.addEventListener("mouseenter", handleMouseEnter, true);
     document.addEventListener("mouseleave", handleMouseLeave, true);
     document.addEventListener("mousedown", handleMouseDown);
@@ -65,12 +106,21 @@ export function useCursorEffect() {
       document.removeEventListener("mouseleave", handleMouseLeave, true);
       document.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mouseup", handleMouseUp);
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
       }
     };
   }, []);
 
-  return { position, isHovering, isClicking };
+  const isHovering = state.isHoveringLink || state.isHoveringButton || state.isHoveringImage;
+
+  return {
+    position,
+    isHovering,
+    isHoveringLink: state.isHoveringLink,
+    isHoveringButton: state.isHoveringButton,
+    isHoveringImage: state.isHoveringImage,
+    isClicking: state.isClicking,
+  };
 }
 

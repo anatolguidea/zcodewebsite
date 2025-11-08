@@ -7,7 +7,7 @@ import { Heading, Typography, GradientText } from "@/components/common";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export function Hero() {
-  const { ref, isVisible } = useScrollReveal({ threshold: 0.2 });
+  const { ref, isVisible, variants } = useScrollReveal({ threshold: 0.2, triggerOnce: false });
 
   return (
     <section
@@ -70,9 +70,9 @@ export function Hero() {
       {/* Content */}
       <div className="container mx-auto max-w-4xl text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          initial="hidden"
+          animate={isVisible ? "visible" : "hidden"}
+          variants={variants}
           className="space-y-8"
         >
           <Heading as="h1" className="mb-6 text-white drop-shadow-lg">
@@ -88,9 +88,9 @@ export function Hero() {
           </Typography>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            initial="hidden"
+            animate={isVisible ? "visible" : "hidden"}
+            variants={variants}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button variant="primary" size="lg" className="shadow-lg">

@@ -1,3 +1,9 @@
 export { Typography, Heading, GradientText } from "./Typography";
 export { CursorGlow } from "./CursorGlow";
 export { PageTransition } from "./PageTransition";
+export { LoadingSpinner } from "./LoadingSpinner";
+export { SuccessAnimation } from "./SuccessAnimation";
+export { ScrollProgress } from "./ScrollProgress";
+export { ParallaxImage } from "./ParallaxImage";
+export { TiltCard } from "./TiltCard";
+export { StructuredData } from "./StructuredData";

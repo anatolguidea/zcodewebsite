@@ -30,14 +30,19 @@ export function Card({
   };
 
   const hoverStyles = hover
-    ? "hover:shadow-lg hover:-translate-y-1"
+    ? "hover:shadow-lg hover:shadow-primary-500/20"
     : "";
 
   if (hover) {
     return (
       <motion.div
         className={cn(baseStyles, variantStyles[variant], hoverStyles, className)}
-        whileHover={{ y: -4 }}
+        whileHover={{ 
+          y: -4,
+          scale: 1.02,
+          transition: { duration: 0.2, ease: "easeOut" }
+        }}
+        whileTap={{ scale: 0.98 }}
         transition={{ duration: 0.2 }}
         onClick={onClick}
         {...props}

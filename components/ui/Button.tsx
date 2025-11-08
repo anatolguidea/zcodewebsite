@@ -49,8 +49,22 @@ export function Button({
         sizeStyles[size],
         className
       )}
-      whileHover={disabled ? {} : { scale: 1.02 }}
-      whileTap={disabled ? {} : { scale: 0.98 }}
+      whileHover={
+        disabled
+          ? {}
+          : {
+              scale: 1.02,
+              transition: { duration: 0.15 },
+            }
+      }
+      whileTap={
+        disabled
+          ? {}
+          : {
+              scale: 0.98,
+              transition: { duration: 0.1 },
+            }
+      }
       transition={{ duration: 0.15 }}
       type={type}
       disabled={disabled}

@@ -35,12 +35,14 @@ export function Navbar() {
   return (
     <>
       <nav
-            className={cn(
+        className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
             ? "glass-dark border-b border-white/5"
             : "bg-transparent"
         )}
+        role="navigation"
+        aria-label="Main navigation"
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -71,13 +73,15 @@ export function Navbar() {
             <div className="flex items-center gap-4 md:hidden">
               <button
                 onClick={toggleMobileMenu}
-                className="p-2 rounded-lg hover:bg-gray-800 transition-colors duration-300"
-                aria-label="Toggle menu"
+                className="p-2 rounded-lg hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
               >
                 {isMobileMenuOpen ? (
-                  <X className="w-6 h-6" />
+                  <X className="w-6 h-6" aria-hidden="true" />
                 ) : (
-                  <Menu className="w-6 h-6" />
+                  <Menu className="w-6 h-6" aria-hidden="true" />
                 )}
               </button>
             </div>
@@ -106,6 +110,10 @@ export function Navbar() {
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 bottom-0 w-64 glass-dark border-l border-white/5 z-50 md:hidden"
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation menu"
             >
               <div className="flex flex-col h-full p-6">
                 <div className="flex justify-between items-center mb-8">
@@ -114,9 +122,10 @@ export function Navbar() {
                   </span>
                   <button
                     onClick={toggleMobileMenu}
-                    className="p-2 rounded-lg hover:bg-gray-800"
+                    className="p-2 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    aria-label="Close menu"
                   >
-                    <X className="w-6 h-6" />
+                    <X className="w-6 h-6" aria-hidden="true" />
                   </button>
                 </div>
 

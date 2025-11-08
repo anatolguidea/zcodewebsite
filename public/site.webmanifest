@@ -1,0 +1,17 @@
+{
+  "name": "Modern Agency Website",
+  "short_name": "YourBrand",
+  "description": "A production-ready, high-performance website with minimal design",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#557170",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
+
