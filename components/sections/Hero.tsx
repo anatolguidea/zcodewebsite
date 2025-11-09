@@ -3,108 +3,82 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui";
-import { Heading, Typography, GradientText } from "@/components/common";
+import { Heading, Typography } from "@/components/common";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export function Hero() {
   const { ref, isVisible, variants } = useScrollReveal({ threshold: 0.2, triggerOnce: false });
+  const imageVariants = useScrollReveal({ threshold: 0.2, triggerOnce: false, variant: "fade" });
 
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 md:py-32 overflow-hidden"
+      className="relative min-h-screen flex items-center px-4 py-20 md:py-32 overflow-hidden bg-black"
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: "url('/image2.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          filter: "blur(1px)",
-        }}
-      >
-        {/* Modern Multi-Layer Overlay System */}
-        
-        {/* Layer 1: Base darkening with sophisticated gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/75 to-black/60" />
-        
-        {/* Layer 2: Radial depth gradient for cinematic look */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse 80% 50% at 50% 50%, transparent 0%, rgba(0,0,0,0.5) 100%)"
-          }}
-        />
-        
-        {/* Layer 3: Brand color color grading - modern tint */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#557170]/50 via-[#557170]/20 to-transparent" />
-        
-        {/* Layer 4: Side vignette for focus */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(circle at 50% 50%, transparent 20%, rgba(0,0,0,0.6) 100%)"
-          }}
-        />
-        
-        {/* Layer 5: Subtle blur for depth and modern aesthetic */}
-        <div className="absolute inset-0 backdrop-blur-[2px]" />
-        
-        {/* Layer 6: Animated gradient overlay for dynamic feel */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-transparent" />
-        
-        {/* Layer 7: Top highlight for modern depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
-        
-        {/* Layer 8: Brand accent with subtle glow effect */}
-        <div 
-          className="absolute inset-0 opacity-60"
-          style={{
-            background: "linear-gradient(135deg, transparent 0%, rgba(85, 113, 112, 0.15) 50%, transparent 100%)"
-          }}
-        />
-      </div>
+      {/* Subtle Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900" />
+      
+      {/* Decorative gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#557170]/5 to-transparent" />
 
-      {/* Content */}
-      <div className="container mx-auto max-w-4xl text-center relative z-10">
-        <motion.div
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-          variants={variants}
-          className="space-y-8"
-        >
-          <Heading as="h1" className="mb-6 text-white drop-shadow-lg">
-            Best <span style={{ color: "#557170" }}>Digital</span> Factory for Fast, Secure, Reliable{" "}
-            <span style={{ color: "#557170" }}>Websites</span>
-          </Heading>
-
-          <Typography variant="lead" className="max-w-2xl mx-auto mb-8 text-white/90 drop-shadow-md">
-            Performance is key today. JAMStack offers simple solutions to build
-            high-performant & future-proof sites, apps, or eCommerce stores.
-            We'll assist you all the way to grow your business smoothly with
-            limitless possibilities.
-          </Typography>
-
+      {/* Content Container - Two Column Layout */}
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left Column - Text and CTA */}
           <motion.div
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
             variants={variants}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="space-y-8 text-left"
           >
-            <Button variant="primary" size="lg" className="shadow-lg">
-              Let's Chat
-            </Button>
-            <Button 
-              variant="ghost" 
-              size="lg"
-              className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:border-white/30"
+            <Heading as="h1" className="mb-6 text-white drop-shadow-lg">
+              Best <span style={{ color: "#557170" }}>Digital</span> Factory for Fast, Secure, Reliable{" "}
+              <span style={{ color: "#557170" }}>Websites</span>
+            </Heading>
+
+            <Typography variant="lead" className="mb-8 text-white/90 drop-shadow-md">
+              Performance is key today. JAMStack offers simple solutions to build
+              high-performant & future-proof sites, apps, or eCommerce stores.
+              We'll assist you all the way to grow your business smoothly with
+              limitless possibilities.
+            </Typography>
+
+            <motion.div
+              initial="hidden"
+              animate={isVisible ? "visible" : "hidden"}
+              variants={variants}
+              className="flex flex-col sm:flex-row gap-4"
             >
-              Our Works
-            </Button>
+              <Button variant="primary" size="lg" className="shadow-lg">
+                Let's Chat
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="lg"
+                className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:border-white/30"
+              >
+                Our Works
+              </Button>
+            </motion.div>
           </motion.div>
-        </motion.div>
+
+          {/* Right Column - SVG Graphic */}
+          <motion.div
+            ref={imageVariants.ref}
+            initial="hidden"
+            animate={imageVariants.isVisible ? "visible" : "hidden"}
+            variants={imageVariants.variants}
+            className="relative flex items-center justify-center lg:justify-end"
+          >
+            <div className="relative w-full max-w-lg aspect-square">
+              <img
+                src="/assets/images/hero-graphic.svg"
+                alt="Digital Factory Illustration"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll Icon - Bottom Center */}
