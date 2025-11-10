@@ -21,29 +21,50 @@
   html {
     scroll-behavior: smooth;
     height: 100%;
+    height: 100dvh; /* Dynamic viewport height */
+    width: 100%;
+    width: 100dvw; /* Dynamic viewport width */
     background: linear-gradient(135deg, #0a0f14 0%, #1a2528 25%, #0f1a1d 50%, #1a2528 75%, #0a0f14 100%);
     background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Extend into safe areas */
+    padding: 0;
+    margin: 0;
   }
 
   body {
     background: linear-gradient(135deg, #0a0f14 0%, #1a2528 25%, #0f1a1d 50%, #1a2528 75%, #0a0f14 100%);
     background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--text-primary);
     transition-property: color, background-color;
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     font-feature-settings: "rlig" 1, "calt" 1;
     min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height */
     min-height: -webkit-fill-available; /* iOS Safari fix */
     position: relative;
     width: 100%;
+    width: 100dvw; /* Dynamic viewport width */
     overflow-x: hidden; /* Prevent horizontal scroll */
+    margin: 0;
+    padding: 0;
   }
 
-  /* Modern gradient overlay with cyan accents */
+  /* Modern gradient overlay with cyan accents - extends to full screen */
   body::before {
     content: '';
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Extend beyond safe areas to cover browser chrome */
     top: calc(-1 * env(safe-area-inset-top, 0));
     left: calc(-1 * env(safe-area-inset-left, 0));
     right: calc(-1 * env(safe-area-inset-right, 0));
@@ -51,14 +72,20 @@
     background: 
       radial-gradient(circle at 20% 50%, rgba(85, 113, 112, 0.15) 0%, transparent 50%),
       radial-gradient(circle at 80% 80%, rgba(98, 205, 255, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 20%, rgba(179, 240, 229, 0.08) 0%, transparent 50%);
+      radial-gradient(circle at 40% 20%, rgba(179, 240, 229, 0.08) 0%, transparent 50%),
+      linear-gradient(135deg, #0a0f14 0%, #1a2528 25%, #0f1a1d 50%, #1a2528 75%, #0a0f14 100%);
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
   }
 
   body::after {
     content: '';
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Extend beyond safe areas to cover browser chrome */
     top: calc(-1 * env(safe-area-inset-top, 0));
     left: calc(-1 * env(safe-area-inset-left, 0));
     right: calc(-1 * env(safe-area-inset-right, 0));
@@ -67,7 +94,7 @@
       linear-gradient(135deg, rgba(85, 113, 112, 0.03) 0%, transparent 50%),
       linear-gradient(45deg, rgba(98, 205, 255, 0.02) 0%, transparent 50%);
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
   }
 }
 

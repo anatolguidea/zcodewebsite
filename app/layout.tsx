@@ -1,9 +1,23 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import { StructuredDataProvider } from "@/components/layout/StructuredDataProvider";
+import { MobileMetaTags } from "@/components/layout/MobileMetaTags";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0f1a1d" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f1a1d" },
+    { color: "#0f1a1d" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
@@ -16,18 +30,6 @@ export const metadata: Metadata = {
   keywords: ["web development", "agency", "minimal design", "modern website"],
   authors: [{ name: "YourBrand" }],
   creator: "YourBrand",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0f1a1d" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f1a1d" },
-    { color: "#0f1a1d" },
-  ],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-    viewportFit: "cover",
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -83,6 +85,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={inter.className}>
+        <MobileMetaTags />
         <StructuredDataProvider />
         {children}
       </body>
