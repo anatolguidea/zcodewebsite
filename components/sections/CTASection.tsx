@@ -11,7 +11,7 @@ export function CTASection() {
   const imageVariants = useScrollReveal({ threshold: 0.2, variant: "fade" });
 
   return (
-    <section ref={ref} className="py-20 md:py-32 px-4">
+    <section ref={ref} className="py-12 md:py-20 lg:py-32 px-4 w-full">
       <div className="container mx-auto max-w-7xl">
         <div className="glass-dark rounded-2xl p-8 md:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">

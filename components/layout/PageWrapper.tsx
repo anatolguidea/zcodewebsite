@@ -20,13 +20,15 @@ export function PageWrapper({ children }: PageWrapperProps) {
   useSmoothScroll(80); // 80px offset for fixed navbar
 
   return (
-    <div className="min-h-screen flex flex-col relative z-10">
+    <div className="min-h-screen min-h-[100dvh] flex flex-col relative z-10 w-full overflow-x-hidden">
       <AnimatedBackground />
       <ScrollProgress />
       <CursorGlow />
       <Navbar />
       <PageTransition>
-        <main className="flex-1 pt-16 md:pt-20 relative z-10">{children}</main>
+        <main className="flex-1 pt-16 md:pt-20 relative z-10 w-full" style={{ paddingTop: `calc(4rem + env(safe-area-inset-top, 0))` }}>
+          {children}
+        </main>
       </PageTransition>
       <Footer />
     </div>

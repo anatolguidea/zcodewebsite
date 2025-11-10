@@ -16,6 +16,18 @@ export const metadata: Metadata = {
   keywords: ["web development", "agency", "minimal design", "modern website"],
   authors: [{ name: "YourBrand" }],
   creator: "YourBrand",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0f1a1d" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f1a1d" },
+    { color: "#0f1a1d" },
+  ],
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

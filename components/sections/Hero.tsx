@@ -13,7 +13,11 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center px-4 py-20 md:py-32 overflow-hidden"
+      className="relative min-h-screen min-h-[100dvh] flex items-center px-4 py-12 md:py-20 md:py-32 overflow-hidden w-full"
+      style={{ 
+        paddingTop: `calc(3rem + env(safe-area-inset-top, 0))`,
+        paddingBottom: `calc(3rem + env(safe-area-inset-bottom, 0))`
+      }}
     >
 
       {/* Content Container - Two Column Layout */}

@@ -38,7 +38,7 @@ export function TestimonialsSection() {
   const { ref, isVisible, variants } = useScrollReveal({ threshold: 0.1 });
 
   return (
-    <section ref={ref} className="py-20 md:py-32 px-4">
+    <section ref={ref} className="py-12 md:py-20 lg:py-32 px-4 w-full">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial="hidden"

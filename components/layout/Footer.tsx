@@ -27,7 +27,14 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-gray-800 mt-auto">
+    <footer 
+      className="border-t border-gray-800 mt-auto w-full"
+      style={{
+        paddingBottom: `calc(3rem + env(safe-area-inset-bottom, 0))`,
+        paddingLeft: `env(safe-area-inset-left, 0)`,
+        paddingRight: `env(safe-area-inset-right, 0)`,
+      }}
+    >
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-8">
           {/* Brand */}

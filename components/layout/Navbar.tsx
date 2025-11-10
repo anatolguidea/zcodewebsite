@@ -36,11 +36,16 @@ export function Navbar() {
     <>
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full",
           isScrolled
             ? "glass-dark border-b border-white/5"
             : "bg-transparent"
         )}
+        style={{
+          paddingTop: `env(safe-area-inset-top, 0)`,
+          paddingLeft: `env(safe-area-inset-left, 0)`,
+          paddingRight: `env(safe-area-inset-right, 0)`,
+        }}
         role="navigation"
         aria-label="Main navigation"
       >
