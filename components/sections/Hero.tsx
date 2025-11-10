@@ -13,13 +13,8 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center px-4 py-20 md:py-32 overflow-hidden bg-black"
+      className="relative min-h-screen flex items-center px-4 py-20 md:py-32 overflow-hidden"
     >
-      {/* Subtle Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900" />
-      
-      {/* Decorative gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#557170]/5 to-transparent" />
 
       {/* Content Container - Two Column Layout */}
       <div className="container mx-auto max-w-7xl relative z-10">
@@ -68,13 +63,13 @@ export function Hero() {
             initial="hidden"
             animate={imageVariants.isVisible ? "visible" : "hidden"}
             variants={imageVariants.variants}
-            className="relative flex items-center justify-center lg:justify-end"
+            className="relative flex items-center justify-center lg:justify-end z-10"
           >
-            <div className="relative w-full max-w-lg aspect-square">
+            <div className="relative w-full max-w-lg aspect-square z-10">
               <img
                 src="/assets/images/hero-graphic.svg"
                 alt="Digital Factory Illustration"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain relative z-10"
               />
             </div>
           </motion.div>

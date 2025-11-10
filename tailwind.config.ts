@@ -21,9 +21,21 @@ const config: Config = {
           800: "#075985",
           900: "#0c4a6e",
         },
+        cyan: {
+          primary: "#62cdff",
+          light: "#b3f0e5",
+          dark: "#4a9fcc",
+        },
+        "gray-cyan": {
+          DEFAULT: "#557170",
+          dark: "#3d5150",
+          light: "#6b8a88",
+        },
         background: {
           light: "#ffffff",
           dark: "#0a0a0a",
+          base: "#0f1a1d",
+          secondary: "#1a2528",
         },
         text: {
           primary: "#1a1a1a",
@@ -100,11 +112,26 @@ const config: Config = {
           "0%": { transform: "translateY(-10px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        "float-slow": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-30px)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
+          "50%": { opacity: "0.8", transform: "scale(1.1)" },
+        },
       },
       animation: {
         fadeIn: "fadeIn 0.3s ease-out",
         slideUp: "slideUp 0.3s ease-out",
         slideDown: "slideDown 0.3s ease-out",
+        float: "float 6s ease-in-out infinite",
+        "float-slow": "float-slow 8s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 4s ease-in-out infinite",
       },
     },
   },

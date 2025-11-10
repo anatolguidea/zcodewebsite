@@ -2,10 +2,15 @@
 
 @layer base {
   :root {
-    --background: #000000;
+    --background: #0a0f14;
     --text-primary: #ffffff;
     --text-secondary: #e5e7eb;
     --gradient-cyan: #557170;
+    --cyan-primary: #62cdff;
+    --cyan-light: #b3f0e5;
+    --gray-cyan: #557170;
+    --gray-cyan-dark: #3d5150;
+    --gray-cyan-light: #6b8a88;
   }
 
   * {
@@ -13,13 +18,45 @@
   }
 
   body {
-    background-color: var(--background);
+    background: linear-gradient(135deg, #0a0f14 0%, #1a2528 25%, #0f1a1d 50%, #1a2528 75%, #0a0f14 100%);
+    background-attachment: fixed;
     color: var(--text-primary);
     transition-property: color, background-color;
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     font-feature-settings: "rlig" 1, "calt" 1;
     min-height: 100vh;
+    position: relative;
+  }
+
+  /* Modern gradient overlay with cyan accents */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(85, 113, 112, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(98, 205, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(179, 240, 229, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(135deg, rgba(85, 113, 112, 0.03) 0%, transparent 50%),
+      linear-gradient(45deg, rgba(98, 205, 255, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
   }
 }
 
@@ -60,6 +97,37 @@
     box-shadow: 0 0 5px rgba(14, 165, 233, 0.2);
   }
 
+  /* Modern background pattern */
+  .bg-modern-gradient {
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(85, 113, 112, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(98, 205, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(179, 240, 229, 0.06) 0%, transparent 70%),
+      linear-gradient(135deg, #0f1a1d 0%, #1a2528 50%, #0f1a1d 100%);
+  }
+
+  /* Animated gradient background */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .bg-animated-gradient {
+    background: linear-gradient(
+      -45deg,
+      #0f1a1d,
+      #1a2528,
+      #0f1a1d,
+      #1a2528
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
@@ -74,6 +142,10 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
+    }
+    
+    .bg-animated-gradient {
+      animation: none !important;
     }
   }
 }

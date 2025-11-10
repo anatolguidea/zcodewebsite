@@ -7,3 +7,4 @@ export { ScrollProgress } from "./ScrollProgress";
 export { ParallaxImage } from "./ParallaxImage";
 export { TiltCard } from "./TiltCard";
 export { StructuredData } from "./StructuredData";
+export { AnimatedBackground } from "./AnimatedBackground";
