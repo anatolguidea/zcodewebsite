@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
 @layer base {
+  /* CSS Reset - Remove all default margins and padding */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   :root {
     --background: #0a0f14;
     --text-primary: #ffffff;
@@ -20,13 +27,18 @@
   body {
     background: linear-gradient(135deg, #0a0f14 0%, #1a2528 25%, #0f1a1d 50%, #1a2528 75%, #0a0f14 100%);
     background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
     color: var(--text-primary);
     transition-property: color, background-color;
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     font-feature-settings: "rlig" 1, "calt" 1;
     min-height: 100vh;
+    min-height: 100dvh;
     position: relative;
+    margin: 0;
+    padding: 0;
   }
 
   /* Modern gradient overlay with cyan accents */
@@ -128,11 +140,24 @@
     animation: gradient-shift 15s ease infinite;
   }
 
+  /* Reset default margins and padding */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
+    background: linear-gradient(135deg, #0a0f14 0%, #1a2528 25%, #0f1a1d 50%, #1a2528 75%, #0a0f14 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   /* Mobile optimizations */
@@ -152,6 +177,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   /* Prevent horizontal scroll on mobile */
@@ -159,6 +187,14 @@
   body {
     overflow-x: hidden;
     max-width: 100vw;
+  }
+
+  /* Ensure root elements fill the screen */
+  #__next,
+  [data-nextjs-scroll-focus-boundary] {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   /* Respect reduced motion */
