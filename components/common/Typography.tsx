@@ -7,10 +7,10 @@ interface TypographyProps extends ComponentProps {
 }
 
 const variantStyles = {
-  body: "text-sm sm:text-base text-gray-300",
-  small: "text-xs sm:text-sm text-gray-400",
-  large: "text-base sm:text-lg text-gray-300",
-  lead: "text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed",
+  body: "text-base text-gray-300",
+  small: "text-sm text-gray-400",
+  large: "text-lg text-gray-300",
+  lead: "text-xl text-gray-400 leading-relaxed",
 };
 
 export function Typography({

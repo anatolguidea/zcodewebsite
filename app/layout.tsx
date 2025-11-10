@@ -16,13 +16,6 @@ export const metadata: Metadata = {
   keywords: ["web development", "agency", "minimal design", "modern website"],
   authors: [{ name: "YourBrand" }],
   creator: "YourBrand",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-    viewportFit: "cover",
-  },
   openGraph: {
     type: "website",
     locale: "en_US",

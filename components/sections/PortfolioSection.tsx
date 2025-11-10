@@ -33,7 +33,7 @@ export function PortfolioSection() {
   const { ref, isVisible, variants } = useScrollReveal({ threshold: 0.1 });
 
   return (
-    <section ref={ref} className="py-12 sm:py-16 md:py-20 lg:py-32 px-4 sm:px-6">
+    <section ref={ref} className="py-20 md:py-32 px-4 bg-gray-900/50">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial="hidden"
@@ -46,7 +46,7 @@ export function PortfolioSection() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-8 sm:mt-12"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-12"
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
           variants={staggerContainer}

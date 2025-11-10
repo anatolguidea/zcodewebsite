@@ -44,13 +44,13 @@ export function Navbar() {
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link
               href="/"
               variant="minimal"
-              className="text-lg sm:text-xl md:text-2xl font-bold text-white touch-manipulation"
+              className="text-xl md:text-2xl font-bold text-white"
             >
               YourBrand
             </Link>
@@ -73,7 +73,7 @@ export function Navbar() {
             <div className="flex items-center gap-4 md:hidden">
               <button
                 onClick={toggleMobileMenu}
-                className="p-2.5 rounded-lg hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 touch-manipulation min-h-[44px] min-w-[44px] flex items-center justify-center"
+                className="p-2 rounded-lg hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500"
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-menu"
@@ -109,34 +109,33 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-72 sm:w-80 glass-dark border-l border-white/5 z-50 md:hidden"
+              className="fixed top-0 right-0 bottom-0 w-64 glass-dark border-l border-white/5 z-50 md:hidden"
               id="mobile-menu"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation menu"
-              style={{ paddingTop: `env(safe-area-inset-top, 0)`, paddingBottom: `env(safe-area-inset-bottom, 0)` }}
             >
-              <div className="flex flex-col h-full p-4 sm:p-6">
-                <div className="flex justify-between items-center mb-6 sm:mb-8">
-                  <span className="text-lg sm:text-xl font-bold text-white">
+              <div className="flex flex-col h-full p-6">
+                <div className="flex justify-between items-center mb-8">
+                  <span className="text-xl font-bold text-white">
                     Menu
                   </span>
                   <button
                     onClick={toggleMobileMenu}
-                    className="p-2.5 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500 touch-manipulation min-h-[44px] min-w-[44px] flex items-center justify-center"
+                    className="p-2 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     aria-label="Close menu"
                   >
                     <X className="w-6 h-6" aria-hidden="true" />
                   </button>
                 </div>
 
-                <nav className="flex flex-col gap-2">
+                <nav className="flex flex-col gap-4">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       variant="minimal"
-                      className="text-base sm:text-lg font-medium py-3 px-2 hover:text-primary-400 transition-colors duration-300 touch-manipulation min-h-[44px] flex items-center"
+                      className="text-lg font-medium py-2 hover:text-primary-400 transition-colors duration-300"
                     >
                       <span onClick={toggleMobileMenu}>{link.label}</span>
                     </Link>

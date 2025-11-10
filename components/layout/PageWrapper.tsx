@@ -4,7 +4,6 @@ import { ReactNode } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import {
-  AnimatedBackground,
   CursorGlow,
   PageTransition,
   ScrollProgress,
@@ -20,13 +19,12 @@ export function PageWrapper({ children }: PageWrapperProps) {
   useSmoothScroll(80); // 80px offset for fixed navbar
 
   return (
-    <div className="min-h-screen min-h-[100dvh] w-full flex flex-col relative z-10 bg-transparent">
-      <AnimatedBackground />
+    <div className="min-h-screen flex flex-col">
       <ScrollProgress />
       <CursorGlow />
       <Navbar />
       <PageTransition>
-        <main className="flex-1 pt-14 sm:pt-16 md:pt-20 relative z-10 w-full bg-transparent">{children}</main>
+        <main className="flex-1 pt-16 md:pt-20">{children}</main>
       </PageTransition>
       <Footer />
     </div>
