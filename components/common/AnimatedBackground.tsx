@@ -19,7 +19,7 @@ export function AnimatedBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 w-screen h-screen">
       {/* Floating orbs with cyan/gray-cyan colors - Smaller on mobile */}
       <motion.div
         className="absolute w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full blur-3xl opacity-15 sm:opacity-20"
