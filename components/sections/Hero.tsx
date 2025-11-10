@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen min-h-[100dvh] flex items-center px-4 py-12 md:py-20 md:py-32 overflow-hidden w-full"
+      className="relative min-h-screen min-h-[100dvh] flex items-center px-4 sm:px-6 py-12 sm:py-16 md:py-20 lg:py-32 overflow-hidden"
       style={{ 
         paddingTop: `calc(3rem + env(safe-area-inset-top, 0))`,
         paddingBottom: `calc(3rem + env(safe-area-inset-bottom, 0))`
@@ -22,20 +22,20 @@ export function Hero() {
 
       {/* Content Container - Two Column Layout */}
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Left Column - Text and CTA */}
           <motion.div
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
             variants={variants}
-            className="space-y-8 text-left"
+            className="space-y-4 sm:space-y-6 md:space-y-8 text-center lg:text-left"
           >
-            <Heading as="h1" className="mb-6 text-white drop-shadow-lg">
+            <Heading as="h1" className="mb-4 sm:mb-6 text-white drop-shadow-lg text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
               Best <span style={{ color: "#557170" }}>Digital</span> Factory for Fast, Secure, Reliable{" "}
               <span style={{ color: "#557170" }}>Websites</span>
             </Heading>
 
-            <Typography variant="lead" className="mb-8 text-white/90 drop-shadow-md">
+            <Typography variant="lead" className="mb-6 sm:mb-8 text-white/90 drop-shadow-md text-base sm:text-lg md:text-xl px-2 sm:px-0">
               Performance is key today. JAMStack offers simple solutions to build
               high-performant & future-proof sites, apps, or eCommerce stores.
               We'll assist you all the way to grow your business smoothly with
@@ -46,15 +46,15 @@ export function Hero() {
               initial="hidden"
               animate={isVisible ? "visible" : "hidden"}
               variants={variants}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
-              <Button variant="primary" size="lg" className="shadow-lg">
+              <Button variant="primary" size="lg" className="shadow-lg w-full sm:w-auto min-h-[44px]">
                 Let's Chat
               </Button>
               <Button 
                 variant="ghost" 
                 size="lg"
-                className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:border-white/30"
+                className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:border-white/30 w-full sm:w-auto min-h-[44px]"
               >
                 Our Works
               </Button>
@@ -67,9 +67,9 @@ export function Hero() {
             initial="hidden"
             animate={imageVariants.isVisible ? "visible" : "hidden"}
             variants={imageVariants.variants}
-            className="relative flex items-center justify-center lg:justify-end z-10"
+            className="relative flex items-center justify-center lg:justify-end z-10 mt-8 lg:mt-0"
           >
-            <div className="relative w-full max-w-lg aspect-square z-10">
+            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg aspect-square z-10">
               <img
                 src="/assets/images/hero-graphic.svg"
                 alt="Digital Factory Illustration"
@@ -85,7 +85,8 @@ export function Hero() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="absolute bottom-8 left-0 right-0 z-20 flex justify-center"
+        className="absolute bottom-4 sm:bottom-8 left-0 right-0 z-20 flex justify-center"
+        style={{ paddingBottom: `calc(1rem + env(safe-area-inset-bottom, 0))` }}
       >
         <motion.button
           onClick={() => {
@@ -94,7 +95,7 @@ export function Hero() {
               behavior: "smooth",
             });
           }}
-          className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 cursor-pointer"
+          className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 cursor-pointer touch-manipulation min-h-[44px] min-w-[44px] justify-center"
           aria-label="Scroll down"
           animate={{
             y: [0, 8, 0],
@@ -105,8 +106,8 @@ export function Hero() {
             ease: "easeInOut",
           }}
         >
-          <span className="text-sm font-medium">Scroll</span>
-          <ChevronDown className="w-6 h-6" />
+          <span className="text-xs sm:text-sm font-medium">Scroll</span>
+          <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6" />
         </motion.button>
       </motion.div>
     </section>

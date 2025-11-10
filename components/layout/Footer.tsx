@@ -27,19 +27,12 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer 
-      className="border-t border-gray-800 mt-auto w-full"
-      style={{
-        paddingBottom: `calc(3rem + env(safe-area-inset-bottom, 0))`,
-        paddingLeft: `env(safe-area-inset-left, 0)`,
-        paddingRight: `env(safe-area-inset-right, 0)`,
-      }}
-    >
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-8">
+    <footer className="border-t border-gray-800 mt-auto">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12 mb-6 sm:mb-8">
           {/* Brand */}
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="text-xl font-bold text-white mb-4">
+          <div className="col-span-1 sm:col-span-2 md:col-span-2">
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">
               YourBrand
             </h3>
             <p className="text-sm text-gray-400 max-w-md">
@@ -90,14 +83,14 @@ export function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-400">
+        <div className="pt-6 sm:pt-8 border-t border-gray-800">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-xs sm:text-sm text-gray-400 text-center sm:text-left">
               © {currentYear} YourBrand. All rights reserved.
             </p>
 
             {/* Social Links */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:gap-4">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
@@ -106,7 +99,7 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                    className="text-gray-400 hover:text-primary-400 transition-colors duration-300 touch-manipulation min-h-[44px] min-w-[44px] flex items-center justify-center"
                     aria-label={social.label}
                   >
                     <Icon className="w-5 h-5" />

@@ -11,10 +11,10 @@ export function CTASection() {
   const imageVariants = useScrollReveal({ threshold: 0.2, variant: "fade" });
 
   return (
-    <section ref={ref} className="py-12 md:py-20 lg:py-32 px-4 w-full">
+    <section ref={ref} className="py-12 sm:py-16 md:py-20 lg:py-32 px-4 sm:px-6">
       <div className="container mx-auto max-w-7xl">
-        <div className="glass-dark rounded-2xl p-8 md:p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="glass-dark rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
             {/* Left Column - SVG Graphic */}
             <motion.div
               ref={imageVariants.ref}
@@ -50,15 +50,15 @@ export function CTASection() {
                 initial="hidden"
                 animate={isVisible ? "visible" : "hidden"}
                 variants={variants}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
               >
-                <Link href="/contact">
-                  <Button variant="primary" size="lg">
+                <Link href="/contact" className="w-full sm:w-auto">
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto min-h-[44px]">
                     Let's Discuss
                   </Button>
                 </Link>
-                <Link href="/portfolio">
-                  <Button variant="ghost" size="lg">
+                <Link href="/portfolio" className="w-full sm:w-auto">
+                  <Button variant="ghost" size="lg" className="w-full sm:w-auto min-h-[44px]">
                     View Our Work
                   </Button>
                 </Link>

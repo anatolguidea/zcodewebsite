@@ -20,9 +20,9 @@ export function AnimatedBackground() {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Floating orbs with cyan/gray-cyan colors */}
+      {/* Floating orbs with cyan/gray-cyan colors - Smaller on mobile */}
       <motion.div
-        className="absolute w-96 h-96 rounded-full blur-3xl opacity-20"
+        className="absolute w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full blur-3xl opacity-15 sm:opacity-20"
         style={{
           background: "radial-gradient(circle, rgba(85, 113, 112, 0.4) 0%, transparent 70%)",
           top: "10%",
@@ -49,7 +49,7 @@ export function AnimatedBackground() {
       />
       
       <motion.div
-        className="absolute w-80 h-80 rounded-full blur-3xl opacity-15"
+        className="absolute w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full blur-3xl opacity-10 sm:opacity-15"
         style={{
           background: "radial-gradient(circle, rgba(98, 205, 255, 0.3) 0%, transparent 70%)",
           top: "60%",
@@ -76,7 +76,7 @@ export function AnimatedBackground() {
       />
       
       <motion.div
-        className="absolute w-72 h-72 rounded-full blur-3xl opacity-12"
+        className="absolute w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full blur-3xl opacity-8 sm:opacity-12"
         style={{
           background: "radial-gradient(circle, rgba(179, 240, 229, 0.25) 0%, transparent 70%)",
           bottom: "20%",
@@ -103,7 +103,7 @@ export function AnimatedBackground() {
       />
       
       <motion.div
-        className="absolute w-64 h-64 rounded-full blur-3xl opacity-10"
+        className="absolute w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full blur-3xl opacity-6 sm:opacity-10"
         style={{
           background: "radial-gradient(circle, rgba(85, 113, 112, 0.3) 0%, transparent 70%)",
           top: "40%",

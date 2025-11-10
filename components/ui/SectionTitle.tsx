@@ -42,7 +42,7 @@ export function SectionTitle({
         {children}
       </Component>
       {subtitle && (
-        <p className="text-lg text-gray-400 mt-2">
+        <p className="text-sm sm:text-base md:text-lg text-gray-400 mt-2">
           {subtitle}
         </p>
       )}
