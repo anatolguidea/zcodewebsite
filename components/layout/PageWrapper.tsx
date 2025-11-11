@@ -35,7 +35,7 @@ export function PageWrapper({ children }: PageWrapperProps) {
       <CursorGlow />
       <Navbar />
       <PageTransition>
-        <main className="flex-1 pt-16 md:pt-20 relative z-0">{children}</main>
+        <main className="flex-1 pt-0 md:pt-20 relative z-0">{children}</main>
       </PageTransition>
       <Footer />
     </div>
