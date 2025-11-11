@@ -9,3 +9,4 @@ export { TiltCard } from "./TiltCard";
 export { StructuredData } from "./StructuredData";
 export { default as Aurora } from "./Aurora";
 export { SpotlightCard } from "./SpotlightCard";
+export { default as GradualBlur } from "./GradualBlur";
