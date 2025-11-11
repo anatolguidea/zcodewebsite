@@ -18,14 +18,24 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // Set initial value
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const toggleMobileMenu = () => {
@@ -36,18 +46,24 @@ export function Navbar() {
     <>
       <nav
         className={cn(
-          "fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300",
-          "w-[95%] max-w-6xl mx-auto",
-          "rounded-full",
+          "fixed z-50 transition-all duration-300",
+          // Mobile: Full width, top aligned, simple glow
+          "top-0 left-0 right-0 w-full",
+          "md:left-1/2 md:-translate-x-1/2 md:w-[95%] md:max-w-6xl md:mx-auto",
+          // Mobile: No rounded corners, desktop: rounded-full
+          "rounded-none md:rounded-full",
           "backdrop-blur-xl",
           "bg-white/5",
-          "border border-white/10",
-          "shadow-lg shadow-black/20",
+          "border-b md:border border-white/10",
+          // Mobile: Simple glow effect
+          "shadow-[0_0_20px_rgba(177,158,239,0.3)] md:shadow-lg md:shadow-black/20",
           "safe-area-x",
-          isScrolled && "shadow-xl shadow-black/30"
+          isScrolled && "md:shadow-xl md:shadow-black/30"
         )}
         style={{
-          top: `calc(1rem + env(safe-area-inset-top, 0px))`,
+          top: isMobile 
+            ? `env(safe-area-inset-top, 0px)` 
+            : `calc(1rem + env(safe-area-inset-top, 0px))`,
         }}
         role="navigation"
         aria-label="Main navigation"

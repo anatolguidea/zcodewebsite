@@ -105,6 +105,26 @@
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
   }
+
+  /* Navbar positioning */
+  .navbar-top-mobile {
+    top: env(safe-area-inset-top, 0px);
+  }
+
+  .navbar-top-desktop {
+    top: calc(1rem + env(safe-area-inset-top, 0px));
+  }
+
+  /* Main content padding for mobile safe area */
+  .main-content-padding {
+    padding-top: calc(3.5rem + env(safe-area-inset-top, 0px));
+  }
+
+  @media (min-width: 768px) {
+    .main-content-padding {
+      padding-top: 5rem;
+    }
+  }
 }
 
 @theme inline {
