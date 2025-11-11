@@ -20,17 +20,19 @@ export default function Home() {
         <TestimonialsSection />
         <CTASection />
         
-        {/* Gradual Blur Effect at Bottom */}
-        <GradualBlur
-          target="page"
-          position="bottom"
-          height="6rem"
-          strength={2}
-          divCount={5}
-          curve="bezier"
-          exponential={true}
-          opacity={1}
-        />
+        {/* Gradual Blur Effect at Bottom - Hidden on Mobile */}
+        <div className="hidden md:block">
+          <GradualBlur
+            target="page"
+            position="bottom"
+            height="6rem"
+            strength={2}
+            divCount={5}
+            curve="bezier"
+            exponential={true}
+            opacity={1}
+          />
+        </div>
       </div>
     </PageWrapper>
   );

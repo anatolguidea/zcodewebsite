@@ -26,6 +26,19 @@
 }
 
 @layer utilities {
+  /* Content fade effect for scrolling under navbar */
+  .content-fade-top {
+    mask-image: linear-gradient(to bottom, transparent 0%, transparent calc(1rem + 3.5rem), rgba(0, 0, 0, 0.3) calc(1rem + 3.5rem + 0.5rem), black calc(1rem + 3.5rem + 1rem));
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent calc(1rem + 3.5rem), rgba(0, 0, 0, 0.3) calc(1rem + 3.5rem + 0.5rem), black calc(1rem + 3.5rem + 1rem));
+  }
+
+  @media (min-width: 768px) {
+    .content-fade-top {
+      mask-image: linear-gradient(to bottom, transparent 0%, transparent calc(1rem + 4rem), rgba(0, 0, 0, 0.3) calc(1rem + 4rem + 0.5rem), black calc(1rem + 4rem + 1rem));
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent calc(1rem + 4rem), rgba(0, 0, 0, 0.3) calc(1rem + 4rem + 0.5rem), black calc(1rem + 4rem + 1rem));
+    }
+  }
+
   /* Glassmorphism utilities for minimal design */
   .glass-light {
     background-color: rgba(0, 0, 0, 0.1);
