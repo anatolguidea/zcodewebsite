@@ -1,13 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import { ComponentProps } from "@/types";
 import { cn } from "@/lib/utils";
+import "./Card.css";
 
 interface CardProps extends ComponentProps {
   variant?: "default" | "glass" | "minimal";
   hover?: boolean;
   onClick?: () => void;
+  spotlightColor?: string;
 }
 
 export function Card({
@@ -16,10 +19,25 @@ export function Card({
   className,
   children,
   onClick,
+  spotlightColor = "rgba(177, 158, 239, 0.4)",
   ...props
 }: CardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    cardRef.current.style.setProperty("--mouse-x", `${x}px`);
+    cardRef.current.style.setProperty("--mouse-y", `${y}px`);
+    cardRef.current.style.setProperty("--spotlight-color", spotlightColor);
+  };
+
   const baseStyles =
-    "rounded-xl p-6 transition-all duration-300 border";
+    "rounded-xl p-6 transition-all duration-300 border card-spotlight";
   
   const variantStyles = {
     default:
@@ -36,6 +54,8 @@ export function Card({
   if (hover) {
     return (
       <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
         className={cn(baseStyles, variantStyles[variant], hoverStyles, className)}
         whileHover={{ 
           y: -4,
@@ -54,6 +74,8 @@ export function Card({
 
   return (
     <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
       className={cn(baseStyles, variantStyles[variant], className)}
       onClick={onClick}
       {...props}

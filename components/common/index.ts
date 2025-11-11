@@ -7,3 +7,5 @@ export { ScrollProgress } from "./ScrollProgress";
 export { ParallaxImage } from "./ParallaxImage";
 export { TiltCard } from "./TiltCard";
 export { StructuredData } from "./StructuredData";
+export { default as Aurora } from "./Aurora";
+export { SpotlightCard } from "./SpotlightCard";

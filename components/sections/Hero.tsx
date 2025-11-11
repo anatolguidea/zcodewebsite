@@ -13,13 +13,8 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center px-4 py-20 md:py-32 overflow-hidden bg-black"
+      className="relative min-h-screen flex items-center px-4 py-20 md:py-32 overflow-hidden"
     >
-      {/* Subtle Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900" />
-      
-      {/* Decorative gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#557170]/5 to-transparent" />
 
       {/* Content Container - Two Column Layout */}
       <div className="container mx-auto max-w-7xl relative z-10">

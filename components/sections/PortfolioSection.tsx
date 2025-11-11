@@ -33,7 +33,7 @@ export function PortfolioSection() {
   const { ref, isVisible, variants } = useScrollReveal({ threshold: 0.1 });
 
   return (
-    <section ref={ref} className="py-20 md:py-32 px-4 bg-gray-900/50">
+    <section ref={ref} className="py-20 md:py-32 px-4">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial="hidden"

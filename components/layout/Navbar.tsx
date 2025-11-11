@@ -36,35 +36,40 @@ export function Navbar() {
     <>
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled
-            ? "glass-dark border-b border-white/5"
-            : "bg-transparent"
+          "fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300",
+          "w-[95%] max-w-6xl mx-auto",
+          "rounded-full",
+          "backdrop-blur-xl",
+          "bg-white/5",
+          "border border-white/10",
+          "shadow-lg shadow-black/20",
+          isScrolled && "shadow-xl shadow-black/30"
         )}
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
+        <div className="px-6 md:px-8">
+          <div className="flex items-center justify-between h-14 md:h-16">
+            {/* Logo/Brand Name - Left */}
             <Link
               href="/"
               variant="minimal"
               className="text-xl md:text-2xl font-bold text-white"
             >
-              YourBrand
+              Zcode
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Right */}
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   variant="minimal"
-                  className="text-sm font-medium hover:text-primary-400 transition-colors duration-300"
+                  className="text-sm font-medium text-white/90 hover:text-white transition-colors duration-300 relative group"
                 >
                   {link.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"></span>
                 </Link>
               ))}
             </div>
