@@ -43,8 +43,12 @@ export function Navbar() {
           "bg-white/5",
           "border border-white/10",
           "shadow-lg shadow-black/20",
+          "safe-area-x",
           isScrolled && "shadow-xl shadow-black/30"
         )}
+        style={{
+          top: `calc(1rem + env(safe-area-inset-top, 0px))`,
+        }}
         role="navigation"
         aria-label="Main navigation"
       >
