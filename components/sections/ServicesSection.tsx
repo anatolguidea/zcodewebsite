@@ -11,27 +11,39 @@ import { staggerContainer, staggerItem } from "@/utils/animations";
 const services = [
   {
     icon: Globe,
-    title: "JAMstack Websites",
+    title: "Custom Website Development",
     description:
-      "Develop custom landing pages for a variety of products & apps. Rest assured you will get our help in every step.",
+      "Tailored, high-performance websites built to your requirements and brand.",
   },
   {
     icon: ShoppingCart,
-    title: "JAMstack eCommerce",
+    title: "E-commerce Solutions",
     description:
-      "Increase your sales with a fast and engaging shopping experience. With the power of the latest JAMStack technologies.",
+      "Secure, conversion-focused online stores with modern payment integration.",
   },
   {
     icon: Palette,
-    title: "UI UX Design",
+    title: "UI/UX Design",
     description:
-      "Every design and interaction we create is a love letter for our customers; our mission is to translate your dreams & ideas into design.",
+      "Clean, accessible interfaces that elevate user experience and engagement.",
   },
   {
     icon: Smartphone,
-    title: "Progressive Web App",
+    title: "Web Applications",
     description:
-      "Offering great solutions for building Fast & Reliable JAMStack Progressive Web Applications (PWA).",
+      "Scalable apps with authentication, dashboards, and data-driven features.",
+  },
+  {
+    icon: Globe,
+    title: "API Development & Integration",
+    description:
+      "Custom APIs and seamless integrations with critical third-party services.",
+  },
+  {
+    icon: Smartphone,
+    title: "Performance Optimization",
+    description:
+      "Improve speed, core web vitals, and SEO with targeted optimizations.",
   },
 ];
 
@@ -39,7 +51,7 @@ export function ServicesSection() {
   const { ref, isVisible, variants } = useScrollReveal({ threshold: 0.1 });
 
   return (
-    <section ref={ref} className="py-20 md:py-32 px-4">
+    <section id="services" ref={ref} className="py-20 md:py-32 px-4">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial="hidden"
@@ -60,10 +72,7 @@ export function ServicesSection() {
           {services.map((service) => {
             const Icon = service.icon;
             return (
-              <motion.div
-                key={service.title}
-                variants={staggerItem}
-              >
+              <motion.div key={service.title} variants={staggerItem}>
                 <TiltCard intensity={1}>
                   <Card variant="glass" hover className="h-full">
                     <div className="flex flex-col items-center text-center space-y-4">
@@ -105,4 +114,3 @@ export function ServicesSection() {
     </section>
   );
 }
-

@@ -3,12 +3,7 @@
 import { ReactNode } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import {
-  Aurora,
-  CursorGlow,
-  PageTransition,
-  ScrollProgress,
-} from "@/components/common";
+import { Aurora, PageTransition, ScrollProgress } from "@/components/common";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 interface PageWrapperProps {
@@ -30,14 +25,11 @@ export function PageWrapper({ children }: PageWrapperProps) {
           speed={0.5}
         />
       </div>
-      
+
       <ScrollProgress />
-      <CursorGlow />
       <Navbar />
       <PageTransition>
-        <main 
-          className="flex-1 relative z-0 safe-area-x main-content-padding"
-        >
+        <main className="flex-1 relative z-0 safe-area-x main-content-padding">
           {children}
         </main>
       </PageTransition>

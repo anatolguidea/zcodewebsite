@@ -11,7 +11,7 @@ export function CTASection() {
   const imageVariants = useScrollReveal({ threshold: 0.2, variant: "fade" });
 
   return (
-    <section ref={ref} className="py-20 md:py-32 px-4">
+    <section id="contact" ref={ref} className="py-20 md:py-32 px-4">
       <div className="container mx-auto max-w-7xl">
         <div className="glass-dark rounded-2xl p-8 md:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -42,9 +42,12 @@ export function CTASection() {
               <Heading as="h2" className="mb-4">
                 If you can dream it, we can make it.
               </Heading>
-              <Typography variant="lead" className="mb-8 max-w-2xl lg:max-w-none mx-auto lg:mx-0">
-                We believe in thinking big and starting small. Let's discuss your
-                project and bring your vision to life.
+              <Typography
+                variant="lead"
+                className="mb-8 max-w-2xl lg:max-w-none mx-auto lg:mx-0"
+              >
+                We believe in thinking big and starting small. Let's discuss
+                your project and bring your vision to life.
               </Typography>
               <motion.div
                 initial="hidden"
@@ -70,4 +73,3 @@ export function CTASection() {
     </section>
   );
 }
-

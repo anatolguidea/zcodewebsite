@@ -1,4 +1,3 @@
-export { useCursorEffect } from "./useCursorEffect";
 export { useScrollReveal } from "./useScrollReveal";
 export { useSmoothScroll } from "./useSmoothScroll";
 export { useScrollProgress } from "./useScrollProgress";
